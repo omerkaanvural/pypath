@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>pypath.inputs.signalink &#8212; pypath 0.14.34 documentation</title>
+    <title>pypath.inputs.sider.sider_meddra &#8212; pypath 0.14.34 documentation</title>
   
   
   
@@ -43,12 +43,12 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/pypath.inputs.signalink';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/pypath.inputs.sider.sider_meddra';</script>
     <link rel="shortcut icon" href="../_static/omnipath-logo.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="pypath.inputs.signalink.signalink_annotations" href="pypath.inputs.signalink.signalink_annotations.html" />
-    <link rel="prev" title="pypath.inputs.sider.sider_meddra_with_freq" href="pypath.inputs.sider.sider_meddra_with_freq.html" />
+    <link rel="next" title="pypath.inputs.sider.sider_meddra_with_freq" href="pypath.inputs.sider.sider_meddra_with_freq.html" />
+    <link rel="prev" title="pypath.inputs.sider.sider_drug" href="pypath.inputs.sider.sider_drug.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -425,29 +425,19 @@
             
             <article class="bd-article" role="main">
               
-  <section id="module-pypath.inputs.signalink">
-<span id="pypath-inputs-signalink"></span><h1>pypath.inputs.signalink<a class="headerlink" href="#module-pypath.inputs.signalink" title="Permalink to this heading">§</a></h1>
+  <section id="pypath-inputs-sider-sider-meddra">
+<h1>pypath.inputs.sider.sider_meddra<a class="headerlink" href="#pypath-inputs-sider-sider-meddra" title="Permalink to this heading">§</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="pypath.inputs.sider.sider_meddra">
+<span class="sig-prename descclassname"><span class="pre">pypath.inputs.sider.</span></span><span class="sig-name descname"><span class="pre">sider_meddra</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pypath/inputs/sider.html#sider_meddra"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pypath.inputs.sider.sider_meddra" title="Permalink to this definition">§</a></dt>
+<dd><p>Retrieves drug information from the Sider database.</p>
 <dl class="field-list simple">
-<dt class="field-odd">members<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Drug cid, umls concept ids both for label and MedDra and side effect name.</p>
+</dd>
 </dl>
-<p class="rubric">Functions</p>
-<table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="pypath.inputs.signalink.signalink_annotations.html#pypath.inputs.signalink.signalink_annotations" title="pypath.inputs.signalink.signalink_annotations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">signalink_annotations</span></code></a>([organism])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pypath.inputs.signalink.signalink_function_annotations.html#pypath.inputs.signalink.signalink_function_annotations" title="pypath.inputs.signalink.signalink_function_annotations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">signalink_function_annotations</span></code></a>([organism])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="pypath.inputs.signalink.signalink_interactions.html#pypath.inputs.signalink.signalink_interactions" title="pypath.inputs.signalink.signalink_interactions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">signalink_interactions</span></code></a>([organism, ...])</p></td>
-<td><p>Reads and processes SignaLink3 interactions from local file.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pypath.inputs.signalink.signalink_pathway_annotations.html#pypath.inputs.signalink.signalink_pathway_annotations" title="pypath.inputs.signalink.signalink_pathway_annotations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">signalink_pathway_annotations</span></code></a>([organism])</p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
+</dd></dl>
+
 </section>
 
 
@@ -458,17 +448,17 @@
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="pypath.inputs.sider.sider_meddra_with_freq.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="pypath.inputs.sider.sider_drug.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">pypath.inputs.sider.sider_meddra_with_freq</p>
+          <p class="prev-next-title">pypath.inputs.sider.sider_drug</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="pypath.inputs.signalink.signalink_annotations.html" title="next page">
+  <a class='right-next' id="next-link" href="pypath.inputs.sider.sider_meddra_with_freq.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">pypath.inputs.signalink.signalink_annotations</p>
+      <p class="prev-next-title">pypath.inputs.sider.sider_meddra_with_freq</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
