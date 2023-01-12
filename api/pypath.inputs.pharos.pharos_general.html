@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>pypath.inputs.sider.sider_drug &#8212; pypath 0.14.33 documentation</title>
+    <title>pypath.inputs.pharos.pharos_general &#8212; pypath 0.14.34 documentation</title>
   
   
   
@@ -43,12 +43,12 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/pypath.inputs.sider.sider_drug';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/pypath.inputs.pharos.pharos_general';</script>
     <link rel="shortcut icon" href="../_static/omnipath-logo.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="pypath.inputs.sider.sider_meddra" href="pypath.inputs.sider.sider_meddra.html" />
-    <link rel="prev" title="pypath.inputs.sider" href="pypath.inputs.sider.html" />
+    <link rel="next" title="pypath.inputs.pharos.pharos_gtex" href="pypath.inputs.pharos.pharos_gtex.html" />
+    <link rel="prev" title="pypath.inputs.pharos.pharos_expression" href="pypath.inputs.pharos.pharos_expression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -425,15 +425,22 @@
             
             <article class="bd-article" role="main">
               
-  <section id="pypath-inputs-sider-sider-drug">
-<h1>pypath.inputs.sider.sider_drug<a class="headerlink" href="#pypath-inputs-sider-sider-drug" title="Permalink to this heading">§</a></h1>
+  <section id="pypath-inputs-pharos-pharos-general">
+<h1>pypath.inputs.pharos.pharos_general<a class="headerlink" href="#pypath-inputs-pharos-pharos-general" title="Permalink to this heading">§</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="pypath.inputs.sider.sider_drug">
-<span class="sig-prename descclassname"><span class="pre">pypath.inputs.sider.</span></span><span class="sig-name descname"><span class="pre">sider_drug</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pypath/inputs/sider.html#sider_drug"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pypath.inputs.sider.sider_drug" title="Permalink to this definition">§</a></dt>
-<dd><p>Retrieves drug information from the Sider database.</p>
+<dt class="sig sig-object py" id="pypath.inputs.pharos.pharos_general">
+<span class="sig-prename descclassname"><span class="pre">pypath.inputs.pharos.</span></span><span class="sig-name descname"><span class="pre">pharos_general</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/pypath/inputs/pharos.html#pharos_general"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pypath.inputs.pharos.pharos_general" title="Permalink to this definition">§</a></dt>
+<dd><p>Query the NIH Pharos database by GraphQL.</p>
+<p>Read about Pharos here: <a class="reference external" href="https://pharos.nih.gov/about">https://pharos.nih.gov/about</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Drug cid, name and atc information as a list of named tuples.</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> – A GraphQL query.</p></li>
+<li><p><strong>variables</strong> – Variables to retrieve. A dict of variable names and boolean values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The JSON response parsed into a dict.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -448,17 +455,17 @@
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="pypath.inputs.sider.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="pypath.inputs.pharos.pharos_expression.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">pypath.inputs.sider</p>
+          <p class="prev-next-title">pypath.inputs.pharos.pharos_expression</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="pypath.inputs.sider.sider_meddra.html" title="next page">
+  <a class='right-next' id="next-link" href="pypath.inputs.pharos.pharos_gtex.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">pypath.inputs.sider.sider_meddra</p>
+      <p class="prev-next-title">pypath.inputs.pharos.pharos_gtex</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
