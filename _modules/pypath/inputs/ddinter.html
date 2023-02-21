@@ -424,7 +424,6 @@
               
   <h1>Source code for pypath.inputs.ddinter</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
-<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">bs4</span>
@@ -485,14 +484,11 @@
     <span class="n">links</span> <span class="o">=</span> <span class="p">[</span><span class="n">link</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">refs</span><span class="p">]</span>
     <span class="n">result</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;drugbank&#39;</span><span class="p">,</span> <span class="s1">&#39;chembl&#39;</span><span class="p">,</span> <span class="s1">&#39;pubchem&#39;</span><span class="p">]</span>
     <span class="n">Mapping</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
-        <span class="s1">&#39;Mapping&#39;</span><span class="p">,</span>
-        <span class="p">[</span>
-            <span class="s1">&#39;drugbank&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;chembl&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;pubchem&#39;</span>
-        <span class="p">],</span>
-        <span class="n">defaults</span><span class="o">=</span><span class="kc">None</span>
+        <span class="s1">&#39;DDInterMapping&#39;</span><span class="p">,</span>
+        <span class="n">fields</span><span class="p">,</span>
+        <span class="n">defaults</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
     <span class="p">)</span>
     <span class="n">mapping_targets</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;drugbank&quot;</span><span class="p">,</span> <span class="s2">&quot;chembl&quot;</span><span class="p">,</span> <span class="s2">&quot;pubchem&quot;</span><span class="p">]</span>
     <span class="n">mapping_dict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -503,6 +499,51 @@
                 <span class="n">mapping_dict</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     
     <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Mapping</span><span class="p">(</span><span class="o">**</span><span class="n">mapping_dict</span><span class="p">))</span>
+                
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_all_mappings"><a class="viewcode-back" href="../../../api/pypath.inputs.ddinter.get_all_mappings.html#pypath.inputs.ddinter.get_all_mappings">[docs]</a><span class="k">def</span> <span class="nf">get_all_mappings</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Retrieves all mappings of  drugs in DDinter to drugbank, chembl, pubchem</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        list of mapping namedtuples</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ddinter_id&#39;</span><span class="p">,</span> <span class="s1">&#39;drugbank&#39;</span><span class="p">,</span> <span class="s1">&#39;chembl&#39;</span><span class="p">,</span> <span class="s1">&#39;pubchem&#39;</span><span class="p">]</span>
+    <span class="n">Mapping</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+        <span class="s1">&#39;DDInterMapping&#39;</span><span class="p">,</span>
+        <span class="n">fields</span><span class="p">,</span>
+        <span class="n">defaults</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="p">)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+    <span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">get_record_number</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">ddinter_drug</span> <span class="o">=</span> <span class="s1">&#39;DDInter&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="n">urls</span><span class="o">.</span><span class="n">urls</span><span class="p">[</span><span class="s1">&#39;ddinter&#39;</span><span class="p">][</span><span class="s1">&#39;url_mapping&#39;</span><span class="p">]</span> <span class="o">%</span> <span class="n">ddinter_drug</span>
+    
+        <span class="n">c</span> <span class="o">=</span> <span class="n">curl</span><span class="o">.</span><span class="n">Curl</span><span class="p">(</span>
+            <span class="n">url</span><span class="p">,</span> 
+            <span class="n">silent</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
+            <span class="n">large</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+            <span class="p">)</span>
+
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">bs4</span><span class="o">.</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">fileobj</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+        <span class="n">refs</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+
+        <span class="n">links</span> <span class="o">=</span> <span class="p">[</span><span class="n">link</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">refs</span><span class="p">]</span>
+
+        <span class="n">mapping_targets</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;drugbank&quot;</span><span class="p">,</span> <span class="s2">&quot;chembl&quot;</span><span class="p">,</span> <span class="s2">&quot;pubchem&quot;</span><span class="p">]</span>
+        <span class="n">mapping_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="n">mapping_dict</span><span class="p">[</span><span class="s2">&quot;ddinter_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddinter_drug</span>
+        <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">links</span><span class="p">:</span>      
+            <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">mapping_targets</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">link</span><span class="p">:</span>                
+                    <span class="n">mapping_dict</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>                        
+                        
+        <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Mapping</span><span class="p">(</span><span class="o">**</span><span class="n">mapping_dict</span><span class="p">))</span>                                
                 
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
@@ -523,9 +564,10 @@
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">url</span> <span class="o">=</span> <span class="n">urls</span><span class="o">.</span><span class="n">urls</span><span class="p">[</span><span class="s1">&#39;ddinter&#39;</span><span class="p">][</span><span class="s1">&#39;url_interaction&#39;</span><span class="p">]</span> <span class="o">%</span> <span class="n">drug</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">curl</span><span class="o">.</span><span class="n">Curl</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">fileobj</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">fileobj</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">fileobj</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
-    <span class="n">result</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> <span class="c1"># first decleration is set to prevent recurrency. But at the end it will return as a list </span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="n">Interaction</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
             <span class="s1">&#39;DDInterInteraction&#39;</span><span class="p">,</span>
             <span class="p">[</span>
@@ -579,14 +621,15 @@
             <span class="n">defaults</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="p">)</span>
     
-    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">get_record_number</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">get_record_number</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
 
         <span class="n">ddinter_drug</span> <span class="o">=</span> <span class="s1">&#39;DDInter&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
 
         <span class="n">url</span> <span class="o">=</span> <span class="n">urls</span><span class="o">.</span><span class="n">urls</span><span class="p">[</span><span class="s1">&#39;ddinter&#39;</span><span class="p">][</span><span class="s1">&#39;url_interaction&#39;</span><span class="p">]</span> <span class="o">%</span> <span class="n">ddinter_drug</span>
 
         <span class="n">c</span> <span class="o">=</span> <span class="n">curl</span><span class="o">.</span><span class="n">Curl</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
+        <span class="n">fileobj</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">fileobj</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">fileobj</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
         <span class="n">drug1_id</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;info&#39;</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
         <span class="n">drug1_name</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;info&#39;</span><span class="p">][</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span>
@@ -605,7 +648,6 @@
             <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">interaction</span><span class="p">)</span>
             
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
-
 
 </pre></div>
 
