@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>pypath.inputs.compleat &#8212; pypath 0.14.34 documentation</title>
+    <title>pypath.inputs.compath.get_all_mappings &#8212; pypath 0.14.34 documentation</title>
   
   
   
@@ -43,12 +43,12 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/pypath.inputs.compleat';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/pypath.inputs.compath.get_all_mappings';</script>
     <link rel="shortcut icon" href="../_static/omnipath-logo.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="pypath.inputs.compleat.compleat_complexes" href="pypath.inputs.compleat.compleat_complexes.html" />
-    <link rel="prev" title="pypath.inputs.compath.kegg_control" href="pypath.inputs.compath.kegg_control.html" />
+    <link rel="next" title="pypath.inputs.compath.kegg_control" href="pypath.inputs.compath.kegg_control.html" />
+    <link rel="prev" title="pypath.inputs.compath" href="pypath.inputs.compath.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -425,23 +425,20 @@
             
             <article class="bd-article" role="main">
               
-  <section id="module-pypath.inputs.compleat">
-<span id="pypath-inputs-compleat"></span><h1>pypath.inputs.compleat<a class="headerlink" href="#module-pypath.inputs.compleat" title="Permalink to this heading">§</a></h1>
+  <section id="pypath-inputs-compath-get-all-mappings">
+<h1>pypath.inputs.compath.get_all_mappings<a class="headerlink" href="#pypath-inputs-compath-get-all-mappings" title="Permalink to this heading">§</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="pypath.inputs.compath.get_all_mappings">
+<span class="sig-prename descclassname"><span class="pre">pypath.inputs.compath.</span></span><span class="sig-name descname"><span class="pre">get_all_mappings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/pypath/inputs/compath.html#get_all_mappings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pypath.inputs.compath.get_all_mappings" title="Permalink to this definition">§</a></dt>
+<dd><p>Retrieves proposed and accepted mappings by the users/curators between a pair of pathways.
+:param source_db &amp; target_db are database names. It specifies direction:</p>
 <dl class="field-list simple">
-<dt class="field-odd">members<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>interaction information as list of tuples</p>
+</dd>
 </dl>
-<p class="rubric">Functions</p>
-<table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="pypath.inputs.compleat.compleat_complexes.html#pypath.inputs.compleat.compleat_complexes" title="pypath.inputs.compleat.compleat_complexes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compleat_complexes</span></code></a>([predicted])</p></td>
-<td><p>Retrieves and processes protein complexes from the Compleat database.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="pypath.inputs.compleat.compleat_raw.html#pypath.inputs.compleat.compleat_raw" title="pypath.inputs.compleat.compleat_raw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compleat_raw</span></code></a>()</p></td>
-<td><p>Raw protein complex data from the Compleat database.</p></td>
-</tr>
-</tbody>
-</table>
+</dd></dl>
+
 </section>
 
 
@@ -452,17 +449,17 @@
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="pypath.inputs.compath.kegg_control.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="pypath.inputs.compath.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">pypath.inputs.compath.kegg_control</p>
+          <p class="prev-next-title">pypath.inputs.compath</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="pypath.inputs.compleat.compleat_complexes.html" title="next page">
+  <a class='right-next' id="next-link" href="pypath.inputs.compath.kegg_control.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">pypath.inputs.compleat.compleat_complexes</p>
+      <p class="prev-next-title">pypath.inputs.compath.kegg_control</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
